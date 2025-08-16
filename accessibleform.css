@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto&display=swap');
+
+
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* height: 100vh; */
+    background-color: #f4f4f4;
+    margin: 0;
+    font-family: "Comfortaa", sans-serif;
+}
+
+/* -------------------------- Rounded Progress bar css -------------------------- */
+.progress-circle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-ring__circle {
+    fill: #EEEEEE;
+    stroke: #333446;
+    stroke-width: 15;
+    stroke-linecap: round; /* Rounded edges */
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-circle span {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif; /* Lato font */
+    color: #000; /* Black color */
+}
+/* ------------------------ end Rounded Progress Bar css ------------------------ */
+
+p{
+  font-weight: 800;
+  font-size: 20px;
+}
