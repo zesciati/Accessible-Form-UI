@@ -12,6 +12,12 @@ html {
 }
 
 :root{
+
+  /* font size 14px-18px */
+  --step-0-1418: clamp(0.875rem, 0.7727rem + 0.4545vw, 1.125rem);
+  --step-1-1418: clamp(1.05rem, 0.9043rem + 0.6477vw, 1.4063rem);
+  --step-2-1418: clamp(1.26rem, 1.0563rem + 0.9051vw, 1.7578rem);
+
   /* font weight */
   --weight-800:800;
 
@@ -24,12 +30,14 @@ html {
   /* spacing */
   --space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
   --space-2xs: clamp(0.5625rem, 0.5408rem + 0.1087vw, 0.625rem);
+  --space-xs: clamp(0.875rem, 0.8533rem + 0.1087vw, 0.9375rem);
   --space-s: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
   --space-m: clamp(1.6875rem, 1.6223rem + 0.3261vw, 1.875rem);
   --space-l: clamp(2.25rem, 2.163rem + 0.4348vw, 2.5rem);
 
   /* border radius */
   --radius: 10px;
+  --radius-form-input:8px;
 }
 
 body {
@@ -38,7 +46,6 @@ body {
     /* align-items: center; */
     /* height: 100vh; */
     background-color: var(--grey-whiteish);
-    margin: 0;
     font-family: "Comfortaa", sans-serif;
 }
 
@@ -48,6 +55,7 @@ main{
   border: #000 solid 2px;
   border-radius: var(--radius);
 }
+
 
 /* -------------------------- Rounded Progress bar css -------------------------- */
 .progress-circle {
@@ -81,8 +89,11 @@ main{
 h2{
   font-weight: var(--weight-800);
   padding-block: var(--space-s);
-
+  text-align: center;
+  font-size: var(--step-2-1418);
+  display: inline-block;
 }
+
 .del-list{
   background-color: var(--greyish-white);
   padding: var(--space-s);
@@ -93,9 +104,42 @@ ul li{
   font-weight: var(--weight-800);
   list-style-type: none;
   padding-block: var(--space-3xs);
+  font-size: var(--step-0-1418);
 }
 
 ul li:not(:last-child){
   color: var(--grey-del);
 }
 /* -------------------------- end Profile Completeness -------------------------- */
+
+
+/* ----------------------------- Form Accessible ---------------------------- */
+.grid-items-2{
+  margin-top: 1rem; /* giving distant between grid-items-1 and grid-items-2 */
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form label{
+  font-size: var(--step-0-1418);
+  padding-bottom: .23rem;
+
+}
+
+form label:not(:first-child){
+  padding-top: 1rem;
+}
+
+form input{
+  min-width: 60%;
+  padding: var(--space-2xs);
+  border: #000 solid 2px;
+  border-radius: var(--radius-form-input);
+}
+
+form input::placeholder{
+  font-size: var(--step-0-1418);
+}

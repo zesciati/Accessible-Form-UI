@@ -9,33 +9,53 @@
   <script defer src="rounded.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
 
   <main class="grid-container">
     <div class="grid-items-1">
-    <!-- ---------------------- rounded progress bar html ---------------------- -->
-    <section class="progress-circle">
+      <!-- ---------------------- rounded progress bar html ---------------------- -->
+      <section class="progress-circle">
         <svg class="progress-ring" width="150" height="150">
-            <circle class="progress-ring__circle" cx="75" cy="75" r="60" stroke-width="15" />
+          <circle class="progress-ring__circle" cx="75" cy="75" r="60" stroke-width="15" />
         </svg>
         <span id="progress-text">0%</span>
-    </section>
-  <!-- ---------------------- end rounded progress bar html ---------------------- -->
+      </section>
 
-  <h2>Profile Completeness</h2>
+      <!-- ------------------------ profile completeness ------------------------- -->
+      <details>
+        <summary>
+          <h2>Profile Completeness</h2>
+        </summary>
+        <section class="del-list">
+          <ul>
+            <li><del class="cr">Create Account</del></li>
+            <li><del>Update Roadmap Progress</del></li>
+            <li><del>Setup Public Profile</del></li>
+            <li>Complete your first project Invite your Friends</li>
+          </ul>
+        </section>
+      </details>
+    </div>
 
-  <section class="del-list">
-    <ul>
-      <li><del class="cr">Create Account</del></li>
-      <li><del>Update Roadmap Progress</del></li>
-      <li><del>Setup Public Profile</del></li>
-      <li>Complete your first project Invite your Friends</li>
-    </ul>
-  </section>
-
+    <div class="grid-items-2">
+      <!-- --------------------------- form accessible --------------------------- -->
+      <section>
+        <form action="">
+          <label for="fname">Full Name</label>
+          <input type="text" placeholder="What should we call you?" name="fname" id="fname">
+          <label for="email">Email</label>
+          <input type="email" placeholder="What should we call you?" id="email">
+          <label for="epass">Enter Password</label>
+          <input type="password" placeholder="xxxxxxxx" id="epass">
+          <label for="cpass">Confirm Password</label>
+          <input type="password" placeholder="xxxxxxxx" id="cpass">
+          <input type="submit" value="Update Profile">
+        </form>
+      </section>
     </div>
   </main>
 
