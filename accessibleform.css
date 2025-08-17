@@ -56,6 +56,9 @@ main{
   border-radius: var(--radius);
 }
 
+.grid-items-1{
+  grid-area: grid-right;
+}
 
 /* -------------------------- Rounded Progress bar css -------------------------- */
 .progress-circle {
@@ -89,7 +92,6 @@ main{
 h2{
   font-weight: var(--weight-800);
   padding-block: var(--space-s);
-  text-align: center;
   font-size: var(--step-2-1418);
   display: inline-block;
 }
@@ -116,6 +118,7 @@ ul li:not(:last-child){
 /* ----------------------------- Form Accessible ---------------------------- */
 .grid-items-2{
   margin-top: 1rem; /* giving distant between grid-items-1 and grid-items-2 */
+  grid-area: grid-left;
 }
 form{
   display: flex;
@@ -143,3 +146,21 @@ form input{
 form input::placeholder{
   font-size: var(--step-0-1418);
 }
+
+.submit-btn{
+  margin-top: 1rem;
+  padding-inline: 3rem;
+  color: var(--greyish-white);
+  background-color: #000;
+}
+
+.submit-btn:hover{
+  background-color: var(--grey-fully);
+}
+/* ----------------------------- end Form Accessible ---------------------------- */
+
+/* @media screen and (min-width: 768px) {
+  .grid-container{
+    grid-template-columns: repeat(4, 1fr)
+    }
+} */
