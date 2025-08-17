@@ -11,14 +11,42 @@ html {
   margin: 0;
 }
 
+:root{
+  /* font weight */
+  --weight-800:800;
+
+  /* color */
+  --grey-whiteish: oklch(0.9672 0 0);
+  --grey-fully: oklch(0.6234 0 0);
+  --greyish-white: oklch(0.9219 0 0);
+  --grey-del: oklch(0.7372 0.0011 197.13);
+
+  /* spacing */
+  --space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+  --space-2xs: clamp(0.5625rem, 0.5408rem + 0.1087vw, 0.625rem);
+  --space-s: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.6223rem + 0.3261vw, 1.875rem);
+  --space-l: clamp(2.25rem, 2.163rem + 0.4348vw, 2.5rem);
+
+  /* border radius */
+  --radius: 10px;
+}
+
 body {
     display: flex;
     justify-content: center;
     /* align-items: center; */
     /* height: 100vh; */
-    background-color: #f4f4f4;
+    background-color: var(--grey-whiteish);
     margin: 0;
     font-family: "Comfortaa", sans-serif;
+}
+
+main{
+  margin: var(--space-2xs);
+  padding: var(--space-s);
+  border: #000 solid 2px;
+  border-radius: var(--radius);
 }
 
 /* -------------------------- Rounded Progress bar css -------------------------- */
@@ -48,7 +76,26 @@ body {
 }
 /* ------------------------ end Rounded Progress Bar css ------------------------ */
 
-p{
-  font-weight: 800;
-  font-size: 20px;
+
+/* -------------------------- Profile Completeness -------------------------- */
+h2{
+  font-weight: var(--weight-800);
+  padding-block: var(--space-s);
+
 }
+.del-list{
+  background-color: var(--greyish-white);
+  padding: var(--space-s);
+  border-radius: var(--radius);
+}
+
+ul li{
+  font-weight: var(--weight-800);
+  list-style-type: none;
+  padding-block: var(--space-3xs);
+}
+
+ul li:not(:last-child){
+  color: var(--grey-del);
+}
+/* -------------------------- end Profile Completeness -------------------------- */
