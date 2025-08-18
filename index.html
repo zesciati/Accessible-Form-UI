@@ -26,7 +26,7 @@
       </section>
 
       <!-- ------------------------ profile completeness ------------------------- -->
-      <details>
+      <details class="disabled">
         <summary>
           <h2>Profile Completeness</h2>
         </summary>
@@ -48,17 +48,41 @@
           <label for="fname">Full Name</label>
           <input type="text" placeholder="What should we call you?" name="fname" id="fname">
           <label for="email">Email</label>
-          <input type="email" placeholder="What should we call you?" id="email">
+          <input type="email" placeholder="Your email please" id="email">
           <label for="epass">Enter Password</label>
           <input type="password" placeholder="xxxxxxxx" id="epass">
+          <input type="checkbox" onclick="myFunction()" class="spass">Show Password
           <label for="cpass">Confirm Password</label>
           <input type="password" placeholder="xxxxxxxx" id="cpass">
+          <input type="checkbox" onclick="confirmFunction()" class="spass">Show Confirm Password
           <input type="submit" value="Update Profile" class="submit-btn">
         </form>
       </section>
     </div>
   </main>
 
+
+  <script>
+    function myFunction(){
+      var x = document.getElementById("epass");
+      if(x.type === "password"){
+        x.type = "text";
+      }else{
+        x.type = "password";
+      }
+    }
+
+    function confirmFunction(){
+      var c = document.getElementById("cpass");
+      if (c.type === "password"){
+        c.type = "text";
+      }else{
+        c.type = "password";
+      }
+    }
+
+
+  </script>
 </body>
 
 </html>
