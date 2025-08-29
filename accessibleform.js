@@ -1,3 +1,6 @@
+
+
+
 /* -------------------------- Rounded Progress bar js -------------------------- */
 document.addEventListener('DOMContentLoaded', function () {
     const circle = document.querySelector('.progress-ring__circle');

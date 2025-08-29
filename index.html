@@ -1,88 +1,111 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="accessibleform.css" />
+    <script defer src="rounded.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="accessibleform.css" />
-  <script defer src="rounded.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto&display=swap"
-    rel="stylesheet">
-</head>
-
-<body>
-
-  <main class="grid-container">
-    <div class="grid-items-1">
-      <!-- ---------------------- rounded progress bar html ---------------------- -->
-      <section class="progress-circle">
-        <svg class="progress-ring" width="150" height="150">
-          <circle class="progress-ring__circle" cx="75" cy="75" r="60" stroke-width="15" />
-        </svg>
-        <span id="progress-text">0%</span>
-      </section>
-
-      <!-- ------------------------ profile completeness ------------------------- -->
-      <details class="disabled">
-        <summary>
-          <h2>Profile Completeness</h2>
-        </summary>
-        <section class="del-list">
-          <ul>
-            <li><del class="cr">Create Account</del></li>
-            <li><del>Update Roadmap Progress</del></li>
-            <li><del>Setup Public Profile</del></li>
-            <li>Complete your first project Invite your Friends</li>
-          </ul>
+  <body>
+    <main class="grid-container">
+      <div class="grid-items-1">
+        <!-- ---------------------- rounded progress bar html ---------------------- -->
+        <section class="progress-circle">
+          <svg class="progress-ring" width="150" height="150">
+            <circle
+              class="progress-ring__circle"
+              cx="75"
+              cy="75"
+              r="60"
+              stroke-width="15"
+            />
+          </svg>
+          <span id="progress-text">0%</span>
         </section>
-      </details>
-    </div>
 
-    <div class="grid-items-2">
-      <!-- --------------------------- form accessible --------------------------- -->
-      <section>
-        <form action="">
-          <label for="fname">Full Name</label>
-          <input type="text" placeholder="What should we call you?" name="fname" id="fname">
-          <label for="email">Email</label>
-          <input type="email" placeholder="Your email please" id="email">
-          <label for="epass">Enter Password</label>
-          <input type="password" placeholder="xxxxxxxx" id="epass">
-          <input type="checkbox" onclick="myFunction()" class="spass">Show Password
-          <label for="cpass">Confirm Password</label>
-          <input type="password" placeholder="xxxxxxxx" id="cpass">
-          <input type="checkbox" onclick="confirmFunction()" class="spass">Show Confirm Password
-          <input type="submit" value="Update Profile" class="submit-btn">
-        </form>
-      </section>
-    </div>
-  </main>
+        <!-- ------------------------ profile completeness ------------------------- -->
+        <details class="disabled">
+          <summary>
+            <h2>Profile Completeness</h2>
+          </summary>
+          <section class="del-list">
+            <ul>
+              <li><del class="cr">Create Account</del></li>
+              <li><del>Update Roadmap Progress</del></li>
+              <li><del>Setup Public Profile</del></li>
+              <li>Complete your first project Invite your Friends</li>
+            </ul>
+          </section>
+        </details>
+      </div>
 
+      <div class="grid-items-2">
+        <!-- --------------------------- form accessible --------------------------- -->
+        <section>
+          <form action="">
+            <label for="fname">Full Name</label>
+            <input
+              type="text"
+              placeholder="What should we call you?"
+              name="fname"
+              id="fname"
+            />
+            <label for="email">Email</label>
+            <input type="email" placeholder="Your email please" id="email" />
+            <label for="epass">Enter Password</label>
+            <input type="password" placeholder="xxxxxxxx" id="epass" />
+            <input
+              type="checkbox"
+              onclick="togglePass('epass')"
+              class="spass"
+            />Show Password
+            <label for="cpass">Confirm Password</label>
+            <input type="password" placeholder="xxxxxxxx" id="cpass" />
+            <input
+              type="checkbox"
+              onclick="togglePass('cpass')"
+              class="spass"
+            />Show Confirm Password
+            <input type="submit" value="Update Profile" class="submit-btn" />
+          </form>
+        </section>
+      </div>
+    </main>
 
-  <script>
-    function myFunction(){
-      var x = document.getElementById("epass");
-      if(x.type === "password"){
-        x.type = "text";
-      }else{
-        x.type = "password";
+    <script>
+      // function myFunction() {
+      //   var x = document.getElementById("epass");
+      //   if (x.type === "password"){
+      //     x.type = "text";
+      //   }else{
+      //     x.type = "password";
+      //   }
+
+      // function confirmFunction(){
+      //   var c = document.getElementById("cpass");
+      //   if (c.type === "password"){
+      //     c.type = "text";
+      //   }else{
+      //     c.type = "password";
+      //   }
+      // }
+
+      function togglePass(id) {
+        var input = document.getElementById(id);
+        if (input.type === "password") {
+          input.type = "text";
+        } else {
+          input.type = "password";
+        }
       }
-    }
-
-    function confirmFunction(){
-      var c = document.getElementById("cpass");
-      if (c.type === "password"){
-        c.type = "text";
-      }else{
-        c.type = "password";
-      }
-    }
-
-
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>

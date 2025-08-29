@@ -1,3 +1,7 @@
+### kerjaan
+- [ ] membuat directus untuk form baru ini 
+
+
 ### Link
 
 Solution link:
