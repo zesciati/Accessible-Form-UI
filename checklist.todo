@@ -1,1 +1,8 @@
-☐ Menghubungkan form html dengan js
+Ffront-end:
+  ✔ Menghubungkan form html dengan js @done(25-08-29 15:03)
+  ☐ Menambahkan alert form jika tidak diisi 
+
+Back-end:
+  ✔ Membuat directus berjalan @done(25-08-29 15:16)
+  ☐ Membuat Directus umum untuk projek sekarang dan mendatang
+  ☐ Membuat collection form accessible 

@@ -1,3 +1,10 @@
+const fullName     = document.getElementById('fname');
+const email        = document.getElementById('email');
+const enterPass    = document.getElementById('epass');
+const confirmPass  = document.getElementById('cpass');
+const submitButton = document.getElementById('submit');
+
+
 
 
 
