@@ -1,12 +1,12 @@
-const fullName     = document.getElementById('fname');
-const email        = document.getElementById('email');
-const enterPass    = document.getElementById('epass');
-const confirmPass  = document.getElementById('cpass');
-const submitButton = document.getElementById('submit');
+const fullName     = document.getElementById("fname");
+const email        = document.getElementById("email");
+const enterPass    = document.getElementById("epass");
+const confirmPass  = document.getElementById("cpass");
+const submitButton = document.getElementById("submit");
 
-
-
-
+// Error 
+const enterPassError = enterPass.nextElementSibling;
+const confirmPasError = confirmPass.nextElementSibling;
 
 /* -------------------------- Rounded Progress bar js -------------------------- */
 document.addEventListener('DOMContentLoaded', function () {
@@ -39,4 +39,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }, interval);
 });
 /* -------------------------- end Rounded Progress bar js -------------------------- */
+
+
+
+// Password dengan confirm password jika tidak matching
+function checkMatch(){
+const status = document.getElementById('status');
+
+if(enterPass.value === "" || confirmPass.value === "") {
+    status.textContent = "";
+    status.className = "hidden"; 
+    return; // keluar supaya tidak lanjut ke bawah
+}
+
+if(enterPass.value === confirmPass.value && enterPass.value !== ""){
+    status.textContent = "Passwords match!";
+    status.className = "match";
+}else{
+    status.textContent = "Passwords do not match!";
+    status.className = "mismatch";
+}
+
+}
 

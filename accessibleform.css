@@ -164,6 +164,20 @@ form input::placeholder{
 }
 /* ----------------------------- end Form Accessible ---------------------------- */
 
+.mismatch{
+  display: block;
+  color: red;
+}
+
+.match{
+  display: block;
+  color: green;
+}
+
+.hidden{
+  display: none;
+}
+
 @media screen and (min-width: 668px) {
   .grid-container{
     /* gap: 20px; */

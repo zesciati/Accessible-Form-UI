@@ -1,8 +1,16 @@
-Ffront-end:
+Front-end:
   ✔ Menghubungkan form html dengan js @done(25-08-29 15:03)
+  ✔ Menambahkan kelas error di frontend html @done(25-08-30 19:14)
   ☐ Menambahkan alert form jika tidak diisi 
-
+  ☐ Memberikan aturan pengisian form
+  ✔ Enter password dan confirm password terkoneksi @done(25-08-30 22:27)
+  ✘ hanya muncul "Passwords do not match!"; @cancelled(25-08-30 22:27)
+  
 Back-end:
   ✔ Membuat directus berjalan @done(25-08-29 15:16)
-  ☐ Membuat Directus umum untuk projek sekarang dan mendatang
-  ☐ Membuat collection form accessible 
+  ✔ Membuat Directus umum untuk projek sekarang dan mendatang @done(25-08-29 15:45)
+  ✔ Membuat collection form accessible @done(25-08-29 15:45)
+  ✔ Collection bekerja dengan baik @done(25-08-30 15:02)
+  ✔ Membuat access policies @done(25-08-30 19:13)
+  ✔ Membuat user roles @done(25-08-30 19:13)
+  ✔ Membuat user directory @done(25-08-30 19:13)
