@@ -3,6 +3,8 @@ const email        = document.getElementById("email");
 const enterPass    = document.getElementById("epass");
 const confirmPass  = document.getElementById("cpass");
 const submitButton = document.getElementById("submit");
+const form         = document.querySelector("form");
+
 
 // Error 
 const enterPassError = enterPass.nextElementSibling;
@@ -62,3 +64,12 @@ if(enterPass.value === confirmPass.value && enterPass.value !== ""){
 
 }
 
+// Form submit
+
+form.addEventListener("submit", async function (e){
+// Menskip default behaviour untuk menyelesaikan validasi dulu 
+    e.preventDefault();
+    console.log("Form submitted");
+
+
+})

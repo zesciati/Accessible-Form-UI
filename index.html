@@ -52,14 +52,14 @@
           <p class="error"></p>
           <label for="epass">Enter Password</label>
           <input type="password" placeholder="xxxxxxxx" id="epass" oninput="checkMatch()"/>
-          <p class="error"></p>
+          <!-- <p class="error"></p> -->
           <input type="checkbox" onclick="togglePass('epass')" class="spass" />Show Password
           <label for="cpass">Confirm Password</label>
           <input type="password" placeholder="xxxxxxxx" id="cpass" oninput="checkMatch()"/>
-          <p class="error"></p>
+          <!-- <p class="error"></p> -->
           <p id="status"></p>
           <input type="checkbox" onclick="togglePass('cpass')" class="spass" />Show Confirm Password
-          <input type="submit" value="Update Profile" class="submit-btn" id="submit" />
+          <button type="submit" class="submit-btn" id="submit">Update Profile</button>
         </form>
       </section>
     </div>

@@ -154,7 +154,9 @@ form input::placeholder{
 
 .submit-btn{
   margin-top: 1rem;
-  padding-inline: 3rem;
+  min-width: 78%;
+  padding: var(--space-2xs);
+  border-radius: var(--radius-form-input);
   color: var(--greyish-white);
   background-color: #000;
 }
