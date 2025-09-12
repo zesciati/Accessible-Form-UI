@@ -2,9 +2,10 @@ const fullName     = document.getElementById("fname");
 const email        = document.getElementById("email");
 const enterPass    = document.getElementById("epass");
 const confirmPass  = document.getElementById("cpass");
-const submitButton = document.getElementById("submit");
 const form         = document.querySelector("form");
 
+// submit button 
+const submitBtn = document.getElementById("submit")
 
 // Error 
 const enterPassError = enterPass.nextElementSibling;
@@ -43,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
 /* -------------------------- end Rounded Progress bar js -------------------------- */
 
 
+// TODO Buat rule Validation
+
 
 // Password dengan confirm password jika tidak matching
 function checkMatch(){
@@ -71,5 +74,6 @@ form.addEventListener("submit", async function (e){
     e.preventDefault();
     console.log("Form submitted");
 
+    // TODO Validasi
 
 })

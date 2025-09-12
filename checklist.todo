@@ -17,6 +17,7 @@ Back-end:
   ✔ mengecek apakah static token bisa mengakses collection directus @done(25-08-31 18:09)
   ✔ Melihat data pada collection tersebut @done(25-08-31 18:09)
   ✔ Menambahkan data ke collection @done(25-08-31 18:09)
+  ☐ Buat rule Validation
 
 Devops:
   ☐ Melindungi backend dengan zero trust
