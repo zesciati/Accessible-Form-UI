@@ -18,6 +18,8 @@ Back-end:
   ✔ Melihat data pada collection tersebut @done(25-08-31 18:09)
   ✔ Menambahkan data ke collection @done(25-08-31 18:09)
   ☐ Buat rule Validation
+    ☐ fullName Validation
+    ☐ email Validation
 
 Devops:
   ☐ Melindungi backend dengan zero trust

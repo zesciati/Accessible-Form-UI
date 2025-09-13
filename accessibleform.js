@@ -8,6 +8,7 @@ const form         = document.querySelector("form");
 const submitBtn = document.getElementById("submit")
 
 // Error 
+const fullNameError = fullName.nextElementSibling;
 const enterPassError = enterPass.nextElementSibling;
 const confirmPasError = confirmPass.nextElementSibling;
 
@@ -45,7 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // TODO Buat rule Validation
-
+// fullName Logic
+const validasiFullName = () => {
+    const value = fullName.value.trim();
+    
+}
 
 // Password dengan confirm password jika tidak matching
 function checkMatch(){
@@ -68,7 +73,6 @@ if(enterPass.value === confirmPass.value && enterPass.value !== ""){
 }
 
 // Form submit
-
 form.addEventListener("submit", async function (e){
 // Menskip default behaviour untuk menyelesaikan validasi dulu 
     e.preventDefault();
