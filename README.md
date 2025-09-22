@@ -22,3 +22,5 @@ Nama file nya Directus-for-all.
     Menghentikan sementara atau menskip default behaviour. Contohnya submit button memiliki default behaviour untuk mensubmit button ke server Tapi jika ada fitur validasinya maka akan ditahan default behaviour submit button untuk menyelesaikan validasinya terlebih dahulu.
     https://stackoverflow.com/questions/11921210/how-exactly-does-event-preventdefault-affect-the-dom
 </details>
+
+

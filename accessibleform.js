@@ -10,7 +10,7 @@ const submitBtn = document.getElementById("submit")
 // Error 
 const fullNameError = fullName.nextElementSibling;
 const enterPassError = enterPass.nextElementSibling;
-const confirmPasError = confirmPass.nextElementSibling;
+// const confirmPasError = confirmPass.nextElementSibling;
 
 /* -------------------------- Rounded Progress bar js -------------------------- */
 document.addEventListener('DOMContentLoaded', function () {
@@ -47,13 +47,109 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // TODO Buat rule Validation
 // fullName Logic
-const validasiFullName = () => {
+const validateFullName = () => {
     const value = fullName.value.trim();
-    
+    const namePattern=  /^[A-Z][A-Za-zÀ-ÖØ-öø-ÿ]+([ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
+    if(!namePattern.test(value)){
+        fullNameError.textContent = "Please enter a valid name";
+        fullNameError.style.display = "block";
+        return false;
+    }else{
+        fullNameError.textContent = "";
+        fullNameError.style.display = "none";
+        return true;
+    }
 }
+
+
+const validatePass = () => {
+    const value = enterPass.value.trim();
+    const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/ ;
+
+    if(!passwordRegex.test(value) || value === ""){
+        enterPassError.textContent = "Please enter a valid password";
+        enterPassError.style.display = block;
+        return false;
+    }else{
+        enterPassError.textContent = "";
+        enterPassError.style.display = "none";
+        return true;
+    }
+}
+
+
+function valueGone(value, li){
+    if(value === ""){
+        li.textContent = " ";
+        li.style.display = "none";
+    }
+}
+
+
+// FIXME Memberikan status validasi password
+document.addEventListener("DOMContentLoaded", () => {
+
+   
+
+    // LiveValidateFullName
+    email.addEventListener("input", liveValidateFullName);
+    function liveValidateFullName(){
+    const value = email.value.trim();
+    
+    const conditions = [
+        {test: /^[A-Z]/,                  message: "Must start with a capital letter"},
+        {test: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/, message: "Must only contain letters (no numbers or special symbols)"},  
+    ];
+
+    fullNameError.innerHTML = "";
+
+    conditions.forEach(c => {
+    const li = document.createElement("li");
+    
+    })
+
+    }
+
+    // LiveValidatePass
+    enterPass.addEventListener("input", liveValidatePass);
+    function liveValidatePass(){
+
+    const value = enterPass.value.trim();
+
+    const conditions = [
+        { test: /.{8,}/, message: "Must be at least 8 characters long" },
+        { test: /[A-Z]/, message: "Must contain at least one uppercase letter" },
+        { test: /[a-z]/, message: "Must contain at least one lowercase letter" },
+        { test: /[0-9]/, message: "Must contain at least one digit" },
+        { test: /[#?!@$%^&*-]/, message: "Must contain at least one special character (#?!@$%^&*-)" }
+    ];
+
+    enterPassError.innerHTML = "";  
+
+    conditions.forEach(c => {
+    const li = document.createElement("li");
+    if (c.test.test(value)) {
+        li.textContent = "✅ " + c.message;
+        li.classList.add("list-success")
+    } else {
+        li.textContent = "❌ " + c.message;
+        li.classList.add("list-failed")
+
+    }
+
+
+    valueGone(value, li);
+
+    enterPassError.appendChild(li);
+
+    });
+    }
+});
+
 
 // Password dengan confirm password jika tidak matching
 function checkMatch(){
+
 const status = document.getElementById('status');
 
 if(enterPass.value === "" || confirmPass.value === "") {

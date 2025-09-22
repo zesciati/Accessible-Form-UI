@@ -5,6 +5,10 @@ Front-end:
   ☐ Memberikan aturan pengisian form
   ✔ Enter password dan confirm password terkoneksi @done(25-08-30 22:27)
   ✘ hanya muncul "Passwords do not match!"; @cancelled(25-08-30 22:27)
+  ☐ Buat rule Validation
+    ✔ fullName Validation @done(25-09-18 22:53)
+      tidak ada angka, harus kapital
+    ☐ email Validation
   
 Back-end:
   ✔ Membuat directus berjalan @done(25-08-29 15:16)
@@ -17,10 +21,9 @@ Back-end:
   ✔ mengecek apakah static token bisa mengakses collection directus @done(25-08-31 18:09)
   ✔ Melihat data pada collection tersebut @done(25-08-31 18:09)
   ✔ Menambahkan data ke collection @done(25-08-31 18:09)
-  ☐ Buat rule Validation
-    ☐ fullName Validation
-    ☐ email Validation
+  
 
 Devops:
   ☐ Melindungi backend dengan zero trust
   ☐ Mendeploy frontend to cloudflare pages
+

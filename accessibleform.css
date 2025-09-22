@@ -180,6 +180,16 @@ form input::placeholder{
   display: none;
 }
 
+.list-success{
+  margin-left: 2rem;
+  color:green
+}
+
+.list-failed{
+  margin-left: 2rem;
+  color: red;
+}
+
 @media screen and (min-width: 668px) {
   .grid-container{
     /* gap: 20px; */
