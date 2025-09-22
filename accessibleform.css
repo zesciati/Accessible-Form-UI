@@ -181,13 +181,17 @@ form input::placeholder{
 }
 
 .list-success{
-  margin-left: 2rem;
-  color:green
+  margin-left: 4rem;
+  color:green;
+  font-size: 14px;
+
 }
 
 .list-failed{
-  margin-left: 2rem;
+  margin-left: 4rem;
+  /* max-width: 20%; */
   color: red;
+  font-size: 14px;
 }
 
 @media screen and (min-width: 668px) {

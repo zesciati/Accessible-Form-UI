@@ -45,39 +45,39 @@ document.addEventListener('DOMContentLoaded', function () {
 /* -------------------------- end Rounded Progress bar js -------------------------- */
 
 
-// TODO Buat rule Validation
 // fullName Logic
-const validateFullName = () => {
-    const value = fullName.value.trim();
-    const namePattern=  /^[A-Z][A-Za-zÀ-ÖØ-öø-ÿ]+([ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
-    if(!namePattern.test(value)){
-        fullNameError.textContent = "Please enter a valid name";
-        fullNameError.style.display = "block";
-        return false;
-    }else{
-        fullNameError.textContent = "";
-        fullNameError.style.display = "none";
-        return true;
-    }
-}
+// const validateFullName = () => {
+//     const value = fullName.value.trim();
+//     const namePattern=  /^[A-Z][A-Za-zÀ-ÖØ-öø-ÿ]+([ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
+//     if(!namePattern.test(value)){
+//         fullNameError.textContent = "Please enter a valid name";
+//         fullNameError.style.display = "block";
+//         return false;
+//     }else{
+//         fullNameError.textContent = "";
+//         fullNameError.style.display = "none";
+//         return true;
+//     }
+// }
 
 
-const validatePass = () => {
-    const value = enterPass.value.trim();
-    const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/ ;
+// const validatePass = () => {
+//     const value = enterPass.value.trim();
+//     const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/ ;
 
-    if(!passwordRegex.test(value) || value === ""){
-        enterPassError.textContent = "Please enter a valid password";
-        enterPassError.style.display = block;
-        return false;
-    }else{
-        enterPassError.textContent = "";
-        enterPassError.style.display = "none";
-        return true;
-    }
-}
+//     if(!passwordRegex.test(value) || value === ""){
+//         enterPassError.textContent = "Please enter a valid password";
+//         enterPassError.style.display = block;
+//         return false;
+//     }else{
+//         enterPassError.textContent = "";
+//         enterPassError.style.display = "none";
+//         return true;
+//     }
+// }
 
 
+// Hapus syarat jika value kosong
 function valueGone(value, li){
     if(value === ""){
         li.textContent = " ";
@@ -85,35 +85,44 @@ function valueGone(value, li){
     }
 }
 
+// Setiap value yang diinput akan dicek dan diberitahu jika ada yang salah atau benar
+function message(conditions, value, idMessage){
+    conditions.forEach(c => {
+    const li = document.createElement("li");
+    if(c.test.test(value)){
+        li.textContent = "✅ " + c.message;
+        li.classList.add("list-success")        
+    }else{
+        li.textContent = "❌ " + c.message;
+        li.classList.add("list-failed")        
+    }
+    valueGone(value, li);
+    idMessage.appendChild(li)
+    })
+}
 
-// FIXME Memberikan status validasi password
 document.addEventListener("DOMContentLoaded", () => {
 
-   
 
     // LiveValidateFullName
-    email.addEventListener("input", liveValidateFullName);
+    fullName.addEventListener("input", liveValidateFullName);
     function liveValidateFullName(){
-    const value = email.value.trim();
-    
+    const value = fullName.value.trim();
+
     const conditions = [
         {test: /^[A-Z]/,                  message: "Must start with a capital letter"},
         {test: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/, message: "Must only contain letters (no numbers or special symbols)"},  
     ];
 
     fullNameError.innerHTML = "";
-
-    conditions.forEach(c => {
-    const li = document.createElement("li");
-    
-    })
-
+    const idMessage = fullNameError;
+    message(conditions, value, idMessage);
     }
 
+    
     // LiveValidatePass
     enterPass.addEventListener("input", liveValidatePass);
     function liveValidatePass(){
-
     const value = enterPass.value.trim();
 
     const conditions = [
@@ -127,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     enterPassError.innerHTML = "";  
 
     conditions.forEach(c => {
+        
     const li = document.createElement("li");
     if (c.test.test(value)) {
         li.textContent = "✅ " + c.message;
@@ -137,12 +147,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     valueGone(value, li);
-
     enterPassError.appendChild(li);
 
     });
+    }
+
+
+    // LiveValidateEmail
+    email.addEventListener("input", liveValidateEmail);
+    function liveValidateEmail(){
+        const value = email.value.trim();
+
+        const conditions = [
+            {test: / /, message: ""},
+            {test: / /, message: ""},
+            
+        ]
     }
 });
 
