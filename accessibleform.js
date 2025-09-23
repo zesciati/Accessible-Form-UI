@@ -1,8 +1,8 @@
-const fullName     = document.getElementById("fname");
-const email        = document.getElementById("email");
-const enterPass    = document.getElementById("epass");
-const confirmPass  = document.getElementById("cpass");
-const form         = document.querySelector("form");
+const fullName = document.getElementById("fname");
+const email = document.getElementById("email");
+const enterPass = document.getElementById("epass");
+const confirmPass = document.getElementById("cpass");
+const form = document.querySelector("form");
 
 // submit button 
 const submitBtn = document.getElementById("submit")
@@ -10,7 +10,7 @@ const submitBtn = document.getElementById("submit")
 // Error 
 const fullNameError = fullName.nextElementSibling;
 const enterPassError = enterPass.nextElementSibling;
-// const confirmPasError = confirmPass.nextElementSibling;
+const emailError = email.nextElementSibling;
 
 /* -------------------------- Rounded Progress bar js -------------------------- */
 document.addEventListener('DOMContentLoaded', function () {
@@ -78,26 +78,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Hapus syarat jika value kosong
-function valueGone(value, li){
-    if(value === ""){
+function valueGone(value, li) {
+    if (value === "") {
         li.textContent = " ";
         li.style.display = "none";
     }
 }
 
 // Setiap value yang diinput akan dicek dan diberitahu jika ada yang salah atau benar
-function message(conditions, value, idMessage){
+function message(conditions, value, idMessage) {
     conditions.forEach(c => {
-    const li = document.createElement("li");
-    if(c.test.test(value)){
-        li.textContent = "✅ " + c.message;
-        li.classList.add("list-success")        
-    }else{
-        li.textContent = "❌ " + c.message;
-        li.classList.add("list-failed")        
-    }
-    valueGone(value, li);
-    idMessage.appendChild(li)
+        const li = document.createElement("li");
+        if (c.test.test(value)) {
+            li.textContent = "✅ " + c.message;
+            li.classList.add("list-success")
+        } else {
+            li.textContent = "❌ " + c.message;
+            li.classList.add("list-failed")
+        }
+        valueGone(value, li);
+        idMessage.appendChild(li);
     })
 }
 
@@ -106,92 +106,117 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // LiveValidateFullName
     fullName.addEventListener("input", liveValidateFullName);
-    function liveValidateFullName(){
-    const value = fullName.value.trim();
+    function liveValidateFullName() {
+        const value = fullName.value.trim();
 
-    const conditions = [
-        {test: /^[A-Z]/,                  message: "Must start with a capital letter"},
-        {test: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/, message: "Must only contain letters (no numbers or special symbols)"},  
-    ];
+        const conditions = [
+            { test: /^[A-Z]/, message: "Must start with a capital letter" },
+            { test: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/, message: "Must only contain letters (no numbers or special symbols)" },
+        ];
 
-    fullNameError.innerHTML = "";
-    const idMessage = fullNameError;
-    message(conditions, value, idMessage);
+        fullNameError.innerHTML = "";
+        const idMessage = fullNameError;
+        message(conditions, value, idMessage);
     }
 
-    
+
     // LiveValidatePass
     enterPass.addEventListener("input", liveValidatePass);
-    function liveValidatePass(){
-    const value = enterPass.value.trim();
+    function liveValidatePass() {
+        const value = enterPass.value.trim();
 
-    const conditions = [
-        { test: /.{8,}/, message: "Must be at least 8 characters long" },
-        { test: /[A-Z]/, message: "Must contain at least one uppercase letter" },
-        { test: /[a-z]/, message: "Must contain at least one lowercase letter" },
-        { test: /[0-9]/, message: "Must contain at least one digit" },
-        { test: /[#?!@$%^&*-]/, message: "Must contain at least one special character (#?!@$%^&*-)" }
-    ];
+        const conditions = [
+            { test: /.{8,}/, message: "Must be at least 8 characters long" },
+            { test: /[A-Z]/, message: "Must contain at least one uppercase letter" },
+            { test: /[a-z]/, message: "Must contain at least one lowercase letter" },
+            { test: /[0-9]/, message: "Must contain at least one digit" },
+            { test: /[#?!@$%^&*-]/, message: "Must contain at least one special character (#?!@$%^&*-)" }
+        ];
 
-    enterPassError.innerHTML = "";  
+        enterPassError.innerHTML = "";
 
-    conditions.forEach(c => {
-        
-    const li = document.createElement("li");
-    if (c.test.test(value)) {
-        li.textContent = "✅ " + c.message;
-        li.classList.add("list-success")
-    } else {
-        li.textContent = "❌ " + c.message;
-        li.classList.add("list-failed")
+        conditions.forEach(c => {
 
-    }
+            const li = document.createElement("li");
+            if (c.test.test(value)) {
+                li.textContent = "✅ " + c.message;
+                li.classList.add("list-success")
+            } else {
+                li.textContent = "❌ " + c.message;
+                li.classList.add("list-failed")
 
-    valueGone(value, li);
-    enterPassError.appendChild(li);
+            }
 
-    });
+            valueGone(value, li);
+            enterPassError.appendChild(li);
+
+        });
     }
 
 
     // LiveValidateEmail
     email.addEventListener("input", liveValidateEmail);
-    function liveValidateEmail(){
+    function liveValidateEmail() {
         const value = email.value.trim();
 
         const conditions = [
-            {test: / /, message: ""},
-            {test: / /, message: ""},
-            
-        ]
+            {
+                test: /^(?!\.)/,
+                message: "Email tidak boleh diawali dengan titik"
+            },
+            {
+                test: /[^.]@/,
+                message: "Email tidak boleh diakhiri dengan titik sebelum tanda @"
+            },
+            {
+                test: /^[\w\-_.]+/,
+                message: "Bagian username hanya boleh huruf, angka, underscore (_), dash (-), atau titik (.)"
+            },
+            {
+                test: /@\w+/,
+                message: "Email harus mengandung domain setelah '@'"
+            },
+            {
+                test: /\.\w+/,
+                message: "Domain harus memiliki ekstensi setelah titik, misalnya .com atau .id"
+            },
+            {
+                test: /\.[A-Za-z]{2,}$/,
+                message: "Ekstensi domain harus minimal 2 huruf"
+            }
+
+        ];
+        emailError.innerHTML = "";
+        const idMessage = emailError;
+        message(conditions, value, idMessage);
     }
 });
 
 
 // Password dengan confirm password jika tidak matching
-function checkMatch(){
+function checkMatch() {
 
-const status = document.getElementById('status');
+    const status = document.getElementById('status');
 
-if(enterPass.value === "" || confirmPass.value === "") {
-    status.textContent = "";
-    status.className = "hidden"; 
-    return; // keluar supaya tidak lanjut ke bawah
-}
+    if (enterPass.value === "" || confirmPass.value === "") {
+        status.textContent = "";
+        status.className = "hidden";
+        return; // keluar supaya tidak lanjut ke bawah
+    }
 
-if(enterPass.value === confirmPass.value && enterPass.value !== ""){
-    status.textContent = "Passwords match!";
-    status.className = "match";
-}else{
-    status.textContent = "Passwords do not match!";
-    status.className = "mismatch";
-}
+    if (enterPass.value === confirmPass.value && enterPass.value !== "") {
+        status.textContent = "Passwords match!";
+        status.className = "match";
+    } else {
+        status.textContent = "Passwords do not match!";
+        status.className = "mismatch";
+    }
 
 }
 
 // Form submit
-form.addEventListener("submit", async function (e){
-// Menskip default behaviour untuk menyelesaikan validasi dulu 
+form.addEventListener("submit", async function (e) {
+    // Menskip default behaviour untuk menyelesaikan validasi dulu 
     e.preventDefault();
     console.log("Form submitted");
 

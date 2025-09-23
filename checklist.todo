@@ -1,14 +1,14 @@
 Front-end:
   ✔ Menghubungkan form html dengan js @done(25-08-29 15:03)
   ✔ Menambahkan kelas error di frontend html @done(25-08-30 19:14)
-  ☐ Menambahkan alert form jika tidak diisi 
-  ☐ Memberikan aturan pengisian form
+  ✔ Menambahkan alert form jika tidak diisi @done(25-09-23 17:10)
+  ✔ Memberikan aturan pengisian form @done(25-09-23 17:10)
   ✔ Enter password dan confirm password terkoneksi @done(25-08-30 22:27)
   ✘ hanya muncul "Passwords do not match!"; @cancelled(25-08-30 22:27)
-  ☐ Buat rule Validation
+  ✔ Buat rule Validation @done(25-09-23 17:10)
     ✔ fullName Validation @done(25-09-18 22:53)
-      tidak ada angka, harus kapital
-    ☐ email Validation
+    ✔ email Validation @done(25-09-23 17:09)
+    ✔ pass Validation @done(25-09-23 17:10)
   
 Back-end:
   ✔ Membuat directus berjalan @done(25-08-29 15:16)
@@ -26,4 +26,5 @@ Back-end:
 Devops:
   ☐ Melindungi backend dengan zero trust
   ☐ Mendeploy frontend to cloudflare pages
+  ☐ Mendeploy to docker
 
