@@ -45,37 +45,27 @@ document.addEventListener('DOMContentLoaded', function () {
 /* -------------------------- end Rounded Progress bar js -------------------------- */
 
 
-// fullName Logic
-// const validateFullName = () => {
-//     const value = fullName.value.trim();
-//     const namePattern=  /^[A-Z][A-Za-zÀ-ÖØ-öø-ÿ]+([ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
-//     if(!namePattern.test(value)){
-//         fullNameError.textContent = "Please enter a valid name";
-//         fullNameError.style.display = "block";
-//         return false;
-//     }else{
-//         fullNameError.textContent = "";
-//         fullNameError.style.display = "none";
-//         return true;
-//     }
-// }
 
+// Password dengan confirm password jika tidak matching
+function checkMatch() {
 
-// const validatePass = () => {
-//     const value = enterPass.value.trim();
-//     const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/ ;
+    const status = document.getElementById('status');
 
-//     if(!passwordRegex.test(value) || value === ""){
-//         enterPassError.textContent = "Please enter a valid password";
-//         enterPassError.style.display = block;
-//         return false;
-//     }else{
-//         enterPassError.textContent = "";
-//         enterPassError.style.display = "none";
-//         return true;
-//     }
-// }
+    if (enterPass.value === "" || confirmPass.value === "") {
+        status.textContent = "";
+        status.className = "hidden";
+        return; // keluar supaya tidak lanjut ke bawah
+    }
 
+    if (enterPass.value === confirmPass.value && enterPass.value !== "") {
+        status.textContent = "Passwords match!";
+        status.className = "match";
+    } else {
+        status.textContent = "Passwords do not match!";
+        status.className = "mismatch";
+    }
+
+}
 
 // Hapus syarat jika value kosong
 function valueGone(value, li) {
@@ -103,7 +93,7 @@ function message(conditions, value, idMessage) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-
+    /* ------------------------------ LiveValidate ------------------------------ */
     // LiveValidateFullName
     fullName.addEventListener("input", liveValidateFullName);
     function liveValidateFullName() {
@@ -190,36 +180,39 @@ document.addEventListener("DOMContentLoaded", () => {
         const idMessage = emailError;
         message(conditions, value, idMessage);
     }
+    /* ------------------------------ end LiveValidate ------------------------------ */
+
+
+    // Form submit
+    form.addEventListener("submit", async function (e) {
+        // Menskip default behaviour untuk menyelesaikan validasi dulu 
+        e.preventDefault();
+        console.log("Form submitted");
+
+        // TODO Validasi
+
+        const isFullNameValid = liveValidateFullName();
+        const isEmailValid = liveValidateEmail();
+        const isEnterPass = liveValidatePass();
+
+        // jika validasi terpenuhi maka bisa proses submit
+        if(isFullNameValid && isEmailValid && isEnterPass){
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Submitting...";
+            
+            try{
+
+            }catch(error){
+
+            }
+
+        }else{
+            console.log("Form validation failed. Please check the fields.")
+        }
+
+    })
 });
 
 
-// Password dengan confirm password jika tidak matching
-function checkMatch() {
 
-    const status = document.getElementById('status');
-
-    if (enterPass.value === "" || confirmPass.value === "") {
-        status.textContent = "";
-        status.className = "hidden";
-        return; // keluar supaya tidak lanjut ke bawah
-    }
-
-    if (enterPass.value === confirmPass.value && enterPass.value !== "") {
-        status.textContent = "Passwords match!";
-        status.className = "match";
-    } else {
-        status.textContent = "Passwords do not match!";
-        status.className = "mismatch";
-    }
-
-}
-
-// Form submit
-form.addEventListener("submit", async function (e) {
-    // Menskip default behaviour untuk menyelesaikan validasi dulu 
-    e.preventDefault();
-    console.log("Form submitted");
-
-    // TODO Validasi
-
-})

@@ -25,6 +25,6 @@ Back-end:
 
 Devops:
   ☐ Melindungi backend dengan zero trust
-  ☐ Mendeploy frontend to cloudflare pages
-  ☐ Mendeploy to docker
+  ✔ Mendeploy frontend to cloudflare worker @done(25-09-24 14:15)
+  ✔ Mendeploy to docker @done(25-09-24 14:15)
 

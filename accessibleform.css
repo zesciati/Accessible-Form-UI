@@ -18,6 +18,11 @@ html {
   --step-1-1418: clamp(1.05rem, 0.9043rem + 0.6477vw, 1.4063rem);
   --step-2-1418: clamp(1.26rem, 1.0563rem + 0.9051vw, 1.7578rem);
 
+  /* font size 12px-15px */
+  --step--1-1215: clamp(0.625rem, 0.581rem + 0.1878vw, 0.75rem);
+  --step-0-1215: clamp(0.75rem, 0.684rem + 0.2817vw, 0.9375rem);
+  --step-1-1215: clamp(0.9rem, 0.8043rem + 0.4085vw, 1.1719rem);
+
   /* font weight */
   --weight-800:800;
 
@@ -181,17 +186,18 @@ form input::placeholder{
 }
 
 .list-success{
-  margin-left: 4rem;
+  margin-left: 2rem;
   color:green;
-  font-size: 14px;
+  font-size: var(--step-0-1215);
 
 }
 
 .list-failed{
-  margin-left: 4rem;
+  margin-left: 2rem;
   /* max-width: 20%; */
   color: red;
-  font-size: 14px;
+  /* font-size: var(--step-0-1418); */
+  font-size: var(--step-0-1215);
 }
 
 @media screen and (min-width: 668px) {
