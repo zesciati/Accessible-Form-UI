@@ -25,4 +25,4 @@ Nama file nya Directus-for-all.
 
 
 accessibleform.js:
-    LiveValidatePass masih menggunakan cara kuno(tidak menggunakan fungsi message dan value gone) untuk melihat cara yang berbeda tetapi hasil yang sama.
+    LiveValidatePass masih menggunakan cara kuno(*tidak menggunakan fungsi message dan value gone*) untuk melihat cara yang berbeda tetapi hasil yang sama.

@@ -198,13 +198,26 @@ document.addEventListener("DOMContentLoaded", () => {
         // jika validasi terpenuhi maka bisa proses submit
         if(isFullNameValid && isEmailValid && isEnterPass){
             
-            submitBtn.disabled = true;
+            submitBtn.disabled = true; // Disable the submit button
             submitBtn.textContent = "Submitting...";
             
             try{
-
+                // Accessing CMS through API
+                const api = await fetch('https://directus-for-all.zakyabiyyu.com/items/form_Accessible_UI',{
+                    method:"POST",
+                    headers:{
+                        // static token CMS, authorization bearer token
+                        "Content-Type": "application/json",
+                        "Authorization" : "Bearer OV-VnDDNArZfjkqAfCtC7xvdEbpdQ34i",
+                    },
+                    body: JSON.stringify({
+                        "full_name": fullName.value.trim(),
+                        "email":email.value.trim(),
+                        "enter_password":  enterPass.value.trim(),
+                    })
+                })
             }catch(error){
-
+                console.error("Fetch error", error);
             }
 
         }else{
