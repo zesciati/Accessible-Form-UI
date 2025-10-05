@@ -12,6 +12,9 @@ const fullNameError = fullName.nextElementSibling;
 const enterPassError = enterPass.nextElementSibling;
 const emailError = email.nextElementSibling;
 
+// popup form succes submitted
+const successState = document.querySelector(".success-state");
+
 /* -------------------------- Rounded Progress bar js -------------------------- */
 document.addEventListener('DOMContentLoaded', function () {
     const circle = document.querySelector('.progress-ring__circle');
@@ -81,14 +84,14 @@ function message(conditions, value, idMessage) {
         const li = document.createElement("li");
         if (c.test.test(value)) {
             li.textContent = "✅ " + c.message;
-            li.classList.add("list-success")
+            li.classList.add("list-success");
         } else {
             li.textContent = "❌ " + c.message;
             li.classList.add("list-failed")
         }
         valueGone(value, li);
         idMessage.appendChild(li);
-    })
+    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -98,6 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
     fullName.addEventListener("input", liveValidateFullName);
     function liveValidateFullName() {
         const value = fullName.value.trim();
+        let isValid = true;
+
 
         const conditions = [
             { test: /^[A-Z]/, message: "Must start with a capital letter" },
@@ -107,13 +112,17 @@ document.addEventListener("DOMContentLoaded", () => {
         fullNameError.innerHTML = "";
         const idMessage = fullNameError;
         message(conditions, value, idMessage);
-    }
+
+        return isValid;
+
+    };
 
 
     // LiveValidatePass
     enterPass.addEventListener("input", liveValidatePass);
     function liveValidatePass() {
         const value = enterPass.value.trim();
+        let isValid = true;
 
         const conditions = [
             { test: /.{8,}/, message: "Must be at least 8 characters long" },
@@ -141,13 +150,17 @@ document.addEventListener("DOMContentLoaded", () => {
             enterPassError.appendChild(li);
 
         });
-    }
+
+        return isValid;
+
+    };
 
 
     // LiveValidateEmail
     email.addEventListener("input", liveValidateEmail);
     function liveValidateEmail() {
         const value = email.value.trim();
+        let isValid = true;
 
         const conditions = [
             {
@@ -179,8 +192,12 @@ document.addEventListener("DOMContentLoaded", () => {
         emailError.innerHTML = "";
         const idMessage = emailError;
         message(conditions, value, idMessage);
-    }
+
+        return isValid;
+
+    };
     /* ------------------------------ end LiveValidate ------------------------------ */
+
 
 
     // Form submit
@@ -196,36 +213,50 @@ document.addEventListener("DOMContentLoaded", () => {
         const isEnterPass = liveValidatePass();
 
         // jika validasi terpenuhi maka bisa proses submit
-        if(isFullNameValid && isEmailValid && isEnterPass){
-            
+        if (isFullNameValid && isEmailValid && isEnterPass) {
+
             submitBtn.disabled = true; // Disable the submit button
             submitBtn.textContent = "Submitting...";
-            
-            try{
+
+            try {
                 // Accessing CMS through API
-                const api = await fetch('https://directus-for-all.zakyabiyyu.com/items/form_Accessible_UI',{
-                    method:"POST",
-                    headers:{
+                const api = await fetch('https://directus-for-all.zakyabiyyu.com/items/form_Accessible_UI', {
+                    method: "POST",
+                    headers: {
                         // static token CMS, authorization bearer token
                         "Content-Type": "application/json",
-                        "Authorization" : "Bearer OV-VnDDNArZfjkqAfCtC7xvdEbpdQ34i",
+                        "Authorization": "Bearer OV-VnDDNArZfjkqAfCtC7xvdEbpdQ34i",
                     },
                     body: JSON.stringify({
                         "full_name": fullName.value.trim(),
-                        "email":email.value.trim(),
-                        "enter_password":  enterPass.value.trim(),
-                    })
-                })
-            }catch(error){
+                        "email": email.value.trim(),
+                        "enter_password": enterPass.value.trim(),
+                        "confirm_password": confirmPass.value.trim()
+                    }),
+                });
+
+                if (api.ok) {
+                    successState.style.display = "block";
+                    form.reset();
+
+                    setTimeout(() => {
+                        successState.style.display = "none";
+                    }, 3000);
+                } else {
+                    console.error("API Error:", api.status, api.statusText);
+                }
+            } catch (error) {
                 console.error("Fetch error", error);
+            } finally {
+                submitBtn.disabled = false; // Re-enable the submit button
+                submitBtn.textContent = "Submit"; // Re-enable the submit button
+
             }
 
-        }else{
+        } else {
             console.log("Form validation failed. Please check the fields.")
         }
 
     })
 });
-
-
 
